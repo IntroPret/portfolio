@@ -5,25 +5,32 @@ import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
 import Projects from './components/Projects';
+import Footer from './components/Footer';
 import AllProjects from './pages/AllProjects';
 
 function MainPage() {
   const location = useLocation();
   const [activeSection, setActiveSection] = useState('');
 
-  // Define refs individually at the top level
   const heroRef = useRef(null);
   const aboutRef = useRef(null);
   const projectsRef = useRef(null);
 
   useLayoutEffect(() => {
+    // Case 1: Restore exact scroll position when coming back
     if (typeof location.state?.scrollY === 'number') {
       window.scrollTo(0, location.state.scrollY);
-    } else {
-      window.scrollTo(0, 0);
+    } 
+    // Case 2: Scroll to a specific section when navigating from another page
+    else if (location.state?.scrollTo) {
+      const element = document.getElementById(location.state.scrollTo);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   }, [location.state]);
 
+  
   useEffect(() => {
     const sections = [heroRef, aboutRef, projectsRef];
 
@@ -31,13 +38,17 @@ function MainPage() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
+            // This part handles the active link highlighting
             setActiveSection(entry.target.id);
+            
+            // This new line adds the class to trigger the animation
+            entry.target.classList.add('is-visible');
           }
         });
       },
       {
-        rootMargin: '-50% 0px -50% 0px',
-        threshold: 0
+        // Triggers when the top of the section is 15% visible
+        threshold: 0.15,
       }
     );
 
@@ -64,9 +75,7 @@ function MainPage() {
         <About ref={aboutRef} />
         <Projects ref={projectsRef} />
       </main>
-      <footer className="app-footer">
-        <p>&copy; {new Date().getFullYear()} Alfred Dexter. All Rights Reserved.</p>
-      </footer>
+      <Footer/ >
     </>
   );
 }

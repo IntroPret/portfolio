@@ -24,6 +24,81 @@ section {
   scroll-margin-top:80px;
 }
 
+#projects {
+  scroll-margin-top:-40px;
+}
+
+/* --- Scroll Animation Styling --- */
+
+/* The initial state for all sections that will be animated */
+.animated-section {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* The state when the section becomes visible */
+.animated-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- Individual Item Scroll Animation Styling --- */
+
+/* Initial state for items like project cards */
+.animated-item {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+/* Visible state for items */
+.animated-item.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- New Staggered Slide-in Animation --- */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-in {
+  /* Set the initial state to invisible */
+  opacity: 0; 
+  
+  /* Apply the animation */
+  animation: slideInUp 0.7s ease-out forwards;
+}
+
+/* --- Staggering Delays for Project Cards --- */
+/* This creates the beautiful cascading effect */
+.projects-grid .project-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.projects-grid .project-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.projects-grid .project-card:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.projects-grid .project-card:nth-child(4) {
+  animation-delay: 0.4s;
+}
+.projects-grid .project-card:nth-child(5) {
+  animation-delay: 0.5s;
+}
+.projects-grid .project-card:nth-child(6) {
+  animation-delay: 0.6s;
+}
+
 /* Main Content Area */
 main {
   padding: 2rem;
@@ -216,8 +291,8 @@ main {
 }
 
 .project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  transform: translateY(-8px) scale(1.02); /* More lift and a slight zoom */
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.5), 0 0 15px rgba(52, 211, 153, 0.3); /* Deeper shadow + accent color glow */
 }
 
 .project-image {
@@ -296,6 +371,7 @@ main {
 
 .all-projects-page {
   padding: 2rem;
+  margin-top: 2.5rem;
 }
 
 .all-projects-nav {

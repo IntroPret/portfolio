@@ -1,10 +1,23 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Home, User, Briefcase, BookOpen, GalleryHorizontal, Sun } from 'lucide-react';
 
 export default function Header({ activeSection }) {
+  const navigate = useNavigate();
   const location = useLocation();
-  const isHomePage = location.pathname === '/';
+
+  const handleNavClick = (sectionId) => {
+    // If we are not on the main page, navigate there first and pass the section to scroll to
+    if (location.pathname !== '/') {
+      navigate('/', { state: { scrollTo: sectionId } });
+    } else {
+      // If we are already on the main page, just scroll smoothly
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
 
   const getLinkClass = (section) => {
     return activeSection === section ? 'nav-link active' : 'nav-link';
@@ -17,32 +30,26 @@ export default function Header({ activeSection }) {
   return (
     <header className="floating-header">
       <nav className="header-nav">
-        {isHomePage ? (
-          <a href="#hero" className={getIconLinkClass('hero')} aria-label="Home">
-            <Home size={20} />
-          </a>
-        ) : (
-          <Link to="/" className="nav-icon-link" aria-label="Home">
-            <Home size={20} />
-          </Link>
-        )}
+        <button onClick={() => handleNavClick('hero')} className={getIconLinkClass('hero')} aria-label="Home">
+          <Home size={20} />
+        </button>
         <div className="separator"></div>
-        <a href="#about" className={getLinkClass('about')}>
+        <button onClick={() => handleNavClick('about')} className={getLinkClass('about')}>
           <User size={18} />
           <span>About</span>
-        </a>
-        <a href="#projects" className={getLinkClass('projects')}>
+        </button>
+        <button onClick={() => handleNavClick('projects')} className={getLinkClass('projects')}>
           <Briefcase size={18} />
           <span>Projects</span>
-        </a>
-        <a href="#blog" className="nav-link">
+        </button>
+        <button onClick={() => handleNavClick('blog')} className="nav-link">
           <BookOpen size={18} />
           <span>Blog</span>
-        </a>
-        <a href="#gallery" className="nav-link">
+        </button>
+        <button onClick={() => handleNavClick('gallery')} className="nav-link">
           <GalleryHorizontal size={18} />
           <span>Gallery</span>
-        </a>
+        </button>
         <div className="separator"></div>
         <button className="nav-icon-link" aria-label="Toggle theme">
           <Sun size={20} />

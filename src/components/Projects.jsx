@@ -23,7 +23,7 @@ const projects = [
 
 const Projects = React.forwardRef((props, ref) => {
   return (
-    <section id="projects" className="projects-section" ref={ref}>
+    <section id="projects" className="projects-section animated-section" ref={ref}>
       <h2 className="section-title">My Recent Work</h2>
         <div className="projects-grid">
             {projects.map((project) => (
