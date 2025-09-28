@@ -1,38 +1,205 @@
+/* General App Styling */
+body {
+  margin: 0;
+  font-family: 'lato', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #111827; /* Dark blue-gray */
+  color: #f9fafb; /* Off-white */
+}
+
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Main Content Area */
+main {
+  padding: 2rem;
+  padding-top: 5rem; /* Push content below floating header */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* --- New Floating Header Styles --- */
+.floating-header {
+  position: fixed; /* This makes it "float" on top of the page */
+  top: 1.5rem; /* Adjust distance from the top */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  background-color: rgba(20, 20, 20, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px); /* For Safari */
+  border-radius: 9999px;
+  padding: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.header-nav {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem; /* Spacing between items */
+}
+
+.nav-link, .nav-icon-link {
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  text-decoration: none;
+  color: #e5e7eb; /* Light gray text */
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
+.nav-link {
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.nav-icon-link {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%; /* Make it a circle */
+}
+
+.nav-icon-link:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+.separator {
+  width: 1px;
+  height: 24px;
+  background-color: rgba(255, 255, 255, 0.2);
+  margin: 0 0.5rem;
+}
+/* --- End Header Styles --- */
+
+
+/* Hero Section Styling */
+.hero-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh; /* Takes up most of the viewport height */
+  padding: 0 2rem;
+  text-align: center;
+  background-color: #111827; /* Same dark background */
+}
+
+.hero-content {
+  max-width: 800px;
+}
+
+.hero-title {
+  font-size: 3rem; /* Large, impactful title */
+  font-weight: 800;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  color: #d1d5db; /* A slightly lighter gray for the subtitle */
+  margin-bottom: 2.5rem;
+}
+
+.hero-button {
+  background-color: #34d399; /* Bright teal/green */
+  color: #111827; /* Dark text for contrast */
+  padding: 0.8rem 2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero-button:hover {
+  transform: translateY(-3px); /* Subtle lift effect */
+  box-shadow: 0 10px 20px rgba(52, 211, 153, 0.2); /* Soft glow */
+}
+
+/* --- About Section Styling --- */
+.about-section {
+  padding: 4rem 2rem;
+  background-color: #1f2937; /* A slightly lighter dark shade */
+}
+
+.section-content-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  max-width: 1100px;
+  margin: 0 auto; /* Center the container */
+}
+
+.about-image-container {
+  flex-shrink: 0; /* Prevents the image from shrinking */
+}
+
+.about-image {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%; /* Makes the image a circle */
+  object-fit: cover; /* Ensures the image covers the area without distortion */
+  border: 5px solid #34d399;
+}
+
+.about-text-container {
+  text-align: left;
+  max-width: 600px;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  color: #f9fafb;
+}
+
+.about-paragraph {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #d1d5db;
+  margin-bottom: 1rem;
+}
+
+/* Footer Styling */
+.app-footer {
+  padding: 2rem;
+  background-color: #1f2937; /* A slightly lighter dark shade */
+  margin-top: 4rem;
+}
+
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem;
   }
-  to {
-    transform: rotate(360deg);
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+  
+  .nav-link span {
+    display: none; /* Hide text on mobile for a cleaner look */
+  }
+  .nav-link {
+    padding: 0.5rem;
+  }
+  .header-nav {
+    gap: 0.25rem;
   }
 }
+
