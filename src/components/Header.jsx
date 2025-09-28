@@ -1,20 +1,37 @@
 import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { Home, User, Briefcase, BookOpen, GalleryHorizontal, Sun } from 'lucide-react';
 
-// The styles are now in the main App.css file, loaded by App.js
-export default function Header() {
+export default function Header({ activeSection }) {
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
+
+  const getLinkClass = (section) => {
+    return activeSection === section ? 'nav-link active' : 'nav-link';
+  };
+
+  const getIconLinkClass = (section) => {
+    return activeSection === section ? 'nav-icon-link active' : 'nav-icon-link';
+  };
+
   return (
     <header className="floating-header">
       <nav className="header-nav">
-        <a href="#hero" className="nav-icon-link" aria-label="Home">
-          <Home size={20} />
-        </a>
+        {isHomePage ? (
+          <a href="#hero" className={getIconLinkClass('hero')} aria-label="Home">
+            <Home size={20} />
+          </a>
+        ) : (
+          <Link to="/" className="nav-icon-link" aria-label="Home">
+            <Home size={20} />
+          </Link>
+        )}
         <div className="separator"></div>
-        <a href="#about" className="nav-link">
+        <a href="#about" className={getLinkClass('about')}>
           <User size={18} />
           <span>About</span>
         </a>
-        <a href="#projects" className="nav-link">
+        <a href="#projects" className={getLinkClass('projects')}>
           <Briefcase size={18} />
           <span>Projects</span>
         </a>
@@ -34,4 +51,3 @@ export default function Header() {
     </header>
   );
 }
-

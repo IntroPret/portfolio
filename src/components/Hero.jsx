@@ -1,9 +1,9 @@
 import React from 'react';
-import '../App.css'; // The styles will be in App.css
+import '../App.css';
 
-export default function Hero() {
+const Hero = React.forwardRef((props, ref) => {
   return (
-    <section id="hero" className="hero-section">
+    <section id="hero" className="hero-section" ref={ref}>
       <div className="hero-content">
         <h1 className="hero-title">Software Developer & Creative Thinker</h1>
         <p className="hero-subtitle">
@@ -15,4 +15,6 @@ export default function Hero() {
       </div>
     </section>
   );
-}
+});
+
+export default Hero;

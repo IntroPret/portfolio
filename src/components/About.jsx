@@ -1,8 +1,8 @@
 import React from 'react';
 
-export default function About() {
+const About = React.forwardRef((props, ref) => {
   return (
-    <section id="about" className="about-section">
+    <section id="about" className="about-section" ref={ref}>
       <div className="section-content-wrapper">
         <div className="about-image-container">
           <img 
@@ -23,4 +23,6 @@ export default function About() {
       </div>
     </section>
   );
-}
+});
+
+export default About;
