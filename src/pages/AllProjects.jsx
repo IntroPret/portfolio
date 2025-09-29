@@ -1,6 +1,5 @@
 import React, { useLayoutEffect, useEffect, useRef } from 'react';
 import Header from '../components/Header';
-import Footer from '../components/Footer';
 import { allProjects } from '../data/project';
 import '../App.css';
 
@@ -70,7 +69,6 @@ export default function AllProjects() {
           ))}
         </div>
       </div>
-      <Footer />
     </>
   );
 }

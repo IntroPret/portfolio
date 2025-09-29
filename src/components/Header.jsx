@@ -1,12 +1,10 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Home, User, Briefcase, BookOpen, GalleryHorizontal, Sun } from 'lucide-react';
+import { Home, User, Briefcase, Sun } from 'lucide-react';
 
 const navLinks = [
   { id: 'about', icon: User, text: 'About' },
   { id: 'projects', icon: Briefcase, text: 'Projects' },
-  { id: 'blog', icon: BookOpen, text: 'Blog' },
-  { id: 'gallery', icon: GalleryHorizontal, text: 'Gallery' },
 ];
 
 export default function Header({ activeSection }) {
