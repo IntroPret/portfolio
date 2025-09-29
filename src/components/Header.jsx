@@ -17,17 +17,30 @@ export default function Header({ activeSection }) {
     } else {
       const element = document.getElementById(sectionId);
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+        if (sectionId === 'hero') {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+            element.scrollIntoView({ behavior: 'smooth' });
+        }
       }
     }
   };
 
   const getLinkClass = (section) => {
+    // If we're on the All Projects page, force the 'projects' link to be active.
+    if (location.pathname === '/projects' && section === 'projects') {
+      return 'nav-link active';
+    }
+    // Otherwise, base it on the scroll position on the main page.
     return activeSection === section ? 'nav-link active' : 'nav-link';
   };
 
   const getIconLinkClass = (section) => {
-    return activeSection === section ? 'nav-icon-link active' : 'nav-icon-link';
+    // Only make the home icon active if we are on the main page and at the top.
+    if (location.pathname === '/' && activeSection === section) {
+      return 'nav-icon-link active';
+    }
+    return 'nav-icon-link';
   };
 
   return (

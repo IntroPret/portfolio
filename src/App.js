@@ -17,29 +17,30 @@ function App() {
   const projectsRef = useRef(null);
 
   useLayoutEffect(() => {
-    // We only want to handle scrolling when the path is the main page
     if (location.pathname === '/') {
       if (typeof location.state?.scrollY === 'number') {
         window.scrollTo(0, location.state.scrollY);
       } else if (location.state?.scrollTo) {
-        // Delay the scroll operation to allow the page to render first
+        // This delay gives the IntersectionObserver time to run and make the sections visible.
         setTimeout(() => {
-          if (location.state.scrollTo === 'hero') {
+          const element = document.getElementById(location.state.scrollTo);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          } else if (location.state.scrollTo === 'hero') {
             window.scrollTo({ top: 0, behavior: 'smooth' });
-          } else {
-            const element = document.getElementById(location.state.scrollTo);
-            if (element) {
-              element.scrollIntoView({ behavior: 'smooth' });
-            }
           }
-        }, 100); // A small delay is usually sufficient
+        }, 150); 
       }
     }
   }, [location.pathname, location.state]);
 
-
   useEffect(() => {
     const sections = [heroRef, aboutRef, projectsRef];
+    
+    // Do not set up the observer if we are not on the main page.
+    if (location.pathname !== '/') {
+      return;
+    }
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -64,11 +65,13 @@ function App() {
     return () => {
       sections.forEach((ref) => {
         if (ref.current) {
+          // eslint-disable-next-line react-hooks/exhaustive-deps
           observer.unobserve(ref.current);
         }
       });
     };
-  }, []);
+    // This is the key change: we re-run this effect when the pathname changes.
+  }, [location.pathname]);
 
   return (
     <div className="App">
