@@ -2,16 +2,21 @@ import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Home, User, Briefcase, BookOpen, GalleryHorizontal, Sun } from 'lucide-react';
 
+const navLinks = [
+  { id: 'about', icon: User, text: 'About' },
+  { id: 'projects', icon: Briefcase, text: 'Projects' },
+  { id: 'blog', icon: BookOpen, text: 'Blog' },
+  { id: 'gallery', icon: GalleryHorizontal, text: 'Gallery' },
+];
+
 export default function Header({ activeSection }) {
   const navigate = useNavigate();
   const location = useLocation();
 
   const handleNavClick = (sectionId) => {
-    // If we are not on the main page, navigate there first and pass the section to scroll to
     if (location.pathname !== '/') {
       navigate('/', { state: { scrollTo: sectionId } });
     } else {
-      // If we are already on the main page, just scroll smoothly
       const element = document.getElementById(sectionId);
       if (element) {
         element.scrollIntoView({ behavior: 'smooth' });
@@ -34,22 +39,12 @@ export default function Header({ activeSection }) {
           <Home size={20} />
         </button>
         <div className="separator"></div>
-        <button onClick={() => handleNavClick('about')} className={getLinkClass('about')}>
-          <User size={18} />
-          <span>About</span>
-        </button>
-        <button onClick={() => handleNavClick('projects')} className={getLinkClass('projects')}>
-          <Briefcase size={18} />
-          <span>Projects</span>
-        </button>
-        <button onClick={() => handleNavClick('blog')} className="nav-link">
-          <BookOpen size={18} />
-          <span>Blog</span>
-        </button>
-        <button onClick={() => handleNavClick('gallery')} className="nav-link">
-          <GalleryHorizontal size={18} />
-          <span>Gallery</span>
-        </button>
+        {navLinks.map(({ id, icon: Icon, text }) => (
+          <button key={id} onClick={() => handleNavClick(id)} className={getLinkClass(id)}>
+            <Icon size={18} />
+            <span>{text}</span>
+          </button>
+        ))}
         <div className="separator"></div>
         <button className="nav-icon-link" aria-label="Toggle theme">
           <Sun size={20} />

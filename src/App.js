@@ -8,7 +8,7 @@ import Projects from './components/Projects';
 import Footer from './components/Footer';
 import AllProjects from './pages/AllProjects';
 
-function MainPage() {
+function App() {
   const location = useLocation();
   const [activeSection, setActiveSection] = useState('');
 
@@ -17,11 +17,9 @@ function MainPage() {
   const projectsRef = useRef(null);
 
   useLayoutEffect(() => {
-    // Case 1: Restore exact scroll position when coming back
     if (typeof location.state?.scrollY === 'number') {
       window.scrollTo(0, location.state.scrollY);
-    } 
-    // Case 2: Scroll to a specific section when navigating from another page
+    }
     else if (location.state?.scrollTo) {
       const element = document.getElementById(location.state.scrollTo);
       if (element) {
@@ -30,7 +28,7 @@ function MainPage() {
     }
   }, [location.state]);
 
-  
+
   useEffect(() => {
     const sections = [heroRef, aboutRef, projectsRef];
 
@@ -38,16 +36,12 @@ function MainPage() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            // This part handles the active link highlighting
             setActiveSection(entry.target.id);
-            
-            // This new line adds the class to trigger the animation
             entry.target.classList.add('is-visible');
           }
         });
       },
       {
-        // Triggers when the top of the section is 15% visible
         threshold: 0.15,
       }
     );
@@ -65,28 +59,22 @@ function MainPage() {
         }
       });
     };
-  }, []); // Empty dependency array ensures this effect runs only once on mount
+  }, []);
 
-  return (
-    <>
-      <Header activeSection={activeSection} />
-      <main>
-        <Hero ref={heroRef} />
-        <About ref={aboutRef} />
-        <Projects ref={projectsRef} />
-      </main>
-      <Footer/ >
-    </>
-  );
-}
-
-function App() {
   return (
     <div className="App">
+      <Header activeSection={activeSection} />
       <Routes>
-        <Route path="/" element={<MainPage />} />
+        <Route path="/" element={
+          <main>
+            <Hero ref={heroRef} />
+            <About ref={aboutRef} />
+            <Projects ref={projectsRef} />
+          </main>
+        } />
         <Route path="/projects" element={<AllProjects />} />
       </Routes>
+      <Footer />
     </div>
   );
 }
