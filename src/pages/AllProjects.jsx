@@ -1,5 +1,4 @@
 import React, { useLayoutEffect, useEffect, useRef } from 'react';
-import Header from '../components/Header';
 import { allProjects } from '../data/project';
 import '../App.css';
 
@@ -45,7 +44,6 @@ export default function AllProjects() {
 
   return (
     <>
-      <Header />
       <div className="all-projects-page">
         <h1 className="section-title">All My Projects</h1>
         <div className="projects-grid">

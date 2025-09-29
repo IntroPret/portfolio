@@ -17,16 +17,25 @@ function App() {
   const projectsRef = useRef(null);
 
   useLayoutEffect(() => {
-    if (typeof location.state?.scrollY === 'number') {
-      window.scrollTo(0, location.state.scrollY);
-    }
-    else if (location.state?.scrollTo) {
-      const element = document.getElementById(location.state.scrollTo);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+    // We only want to handle scrolling when the path is the main page
+    if (location.pathname === '/') {
+      if (typeof location.state?.scrollY === 'number') {
+        window.scrollTo(0, location.state.scrollY);
+      } else if (location.state?.scrollTo) {
+        // Delay the scroll operation to allow the page to render first
+        setTimeout(() => {
+          if (location.state.scrollTo === 'hero') {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          } else {
+            const element = document.getElementById(location.state.scrollTo);
+            if (element) {
+              element.scrollIntoView({ behavior: 'smooth' });
+            }
+          }
+        }, 100); // A small delay is usually sufficient
       }
     }
-  }, [location.state]);
+  }, [location.pathname, location.state]);
 
 
   useEffect(() => {
