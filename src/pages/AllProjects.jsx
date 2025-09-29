@@ -12,6 +12,8 @@ export default function AllProjects() {
   }, []);
 
   useEffect(() => {
+    const currentRefs = projectCardRefs.current; // Capture the refs
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -26,14 +28,15 @@ export default function AllProjects() {
       }
     );
 
-    projectCardRefs.current.forEach((card) => {
+    currentRefs.forEach((card) => {
       if (card) {
         observer.observe(card);
       }
     });
 
+    // Use the captured variable in the cleanup function
     return () => {
-      projectCardRefs.current.forEach((card) => {
+      currentRefs.forEach((card) => {
         if (card) {
           observer.unobserve(card);
         }
