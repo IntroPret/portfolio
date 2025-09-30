@@ -11,17 +11,30 @@ import AllProjects from './pages/AllProjects';
 function App() {
   const location = useLocation();
   const [activeSection, setActiveSection] = useState('');
+  const [theme, setTheme] = useState(() => {
+    const savedTheme = localStorage.getItem('theme');
+    return savedTheme || 'dark';
+  });
 
   const heroRef = useRef(null);
   const aboutRef = useRef(null);
   const projectsRef = useRef(null);
+
+  useEffect(() => {
+    document.body.classList.remove('light-mode', 'dark-mode');
+    document.body.classList.add(`${theme}-mode`);
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'));
+  };
 
   useLayoutEffect(() => {
     if (location.pathname === '/') {
       if (typeof location.state?.scrollY === 'number') {
         window.scrollTo(0, location.state.scrollY);
       } else if (location.state?.scrollTo) {
-        // This delay gives the IntersectionObserver time to run and make the sections visible.
         setTimeout(() => {
           const element = document.getElementById(location.state.scrollTo);
           if (element) {
@@ -37,7 +50,6 @@ function App() {
   useEffect(() => {
     const sections = [heroRef, aboutRef, projectsRef];
     
-    // Do not set up the observer if we are not on the main page.
     if (location.pathname !== '/') {
       return;
     }
@@ -65,17 +77,15 @@ function App() {
     return () => {
       sections.forEach((ref) => {
         if (ref.current) {
-          // eslint-disable-next-line react-hooks/exhaustive-deps
           observer.unobserve(ref.current);
         }
       });
     };
-    // This is the key change: we re-run this effect when the pathname changes.
   }, [location.pathname]);
 
   return (
     <div className="App">
-      <Header activeSection={activeSection} />
+      <Header activeSection={activeSection} theme={theme} toggleTheme={toggleTheme} />
       <Routes>
         <Route path="/" element={
           <main>

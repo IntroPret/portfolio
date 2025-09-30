@@ -9,7 +9,19 @@ const projects = allProjects.slice(0, 2);
 const Projects = React.forwardRef((props, ref) => {
   return (
     <section id="projects" className="projects-section animated-section" ref={ref}>
-      <h2 className="section-title">My Recent Work</h2>
+      <div className="projects-header">
+        <h2 className="section-title">My Recent Work</h2>
+        <div className="view-all-container">
+            <Link
+                to="/projects"
+                state={{ scrollY: window.scrollY }}
+                className="view-all-link"
+            >
+                <span>View All Projects</span>
+                <ArrowRight size={20} className="arrow-icon" />
+            </Link>
+        </div>
+      </div>
         <div className="projects-grid">
             {projects.map((project) => (
                 <div key={project.id} className="project-card">
@@ -25,16 +37,6 @@ const Projects = React.forwardRef((props, ref) => {
                     </div>
                 </div>
             ))}
-        </div>
-        <div className="view-all-container">
-            <Link
-                to="/projects"
-                state={{ scrollY: window.scrollY }}
-                className="view-all-link"
-            >
-                <span>View All Projects</span>
-                <ArrowRight size={20} className="arrow-icon" />
-            </Link>
         </div>
     </section>
   );
