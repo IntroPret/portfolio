@@ -17,6 +17,10 @@ export default function AllProjects() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('is-visible');
+            entry.target.addEventListener('animationend', function handler() {
+              entry.target.classList.remove('animate-slide-in');
+              entry.target.removeEventListener('animationend', handler);
+            });
             observer.unobserve(entry.target);
           }
         });

@@ -21,26 +21,35 @@ body.dark-mode {
 }
 
 body.light-mode {
-  --background-dark: #f9fafb;
-  --background-light: #ffffff;
-  --text-primary: #1f2937;
-  --text-secondary: #4b5563;
-  --accent: #10b981;
+  --background-dark: #f5f6fa;         /* Softer off-white */
+  --background-light: #fdfdfd;        /* Slightly grayish white */
+  --text-primary: #22223b;            /* Darker for readability */
+  --text-secondary: #6c757d;          /* Softer gray */
+  --accent: #0ea672;                  /* More saturated green */
   --accent-text: #ffffff;
-  --link: #4f46e5;
-  --link-hover: #6366f1;
-  --header-bg: rgba(255, 255, 255, 0.7);
-  --header-border: rgba(0, 0, 0, 0.1);
-  --header-shadow: rgba(0, 0, 0, 0.1);
-  --header-text: #374151;
-  --header-text-hover: #111827;
-  --header-hover-bg: rgba(0, 0, 0, 0.05);
-  --separator-color: rgba(0, 0, 0, 0.1);
-  --tag-bg: #e5e7eb;
-  --tag-text: #374151;
-  --project-card-shadow: 0 10px 25px rgba(0, 0, 0, 0.1), 0 0 10px rgba(0, 0, 0, 0.04);
+  --link: #2563eb;                    /* Stronger blue */
+  --link-hover: #1d4ed8;              /* Deeper blue on hover */
+  --header-bg: rgba(255, 255, 255, 0.85);
+  --header-border: rgba(0, 0, 0, 0.07);
+  --header-shadow: rgba(0, 0, 0, 0.07);
+  --header-text: #232946;
+  --header-text-hover: #0f172a;
+  --header-hover-bg: rgba(0, 0, 0, 0.04);
+  --separator-color: rgba(0, 0, 0, 0.08);
+  --tag-bg: #e9ecef;                  /* Muted tag background */
+  --tag-text: #495057;                /* Muted tag text */
+  --project-card-shadow: 0 4px 16px rgba(0,0,0,0.06), 0 0 8px rgba(0,0,0,0.02);
 }
 
+body.light-mode .about-section {
+  border: 1px solid #e0e3ea;
+  box-shadow: 0 2px 12px rgba(60, 60, 90, 0.04);
+}
+
+body.light-mode .project-card {
+  border: 1px solid #e0e3ea;
+  box-shadow: 0 4px 16px rgba(60, 60, 90, 0.06), 0 0 8px rgba(0,0,0,0.02);
+}
 
 body {
   margin: 0;
@@ -261,7 +270,6 @@ main {
 .about-section {
   padding: 2rem 2rem;
   background-color: var(--background-light);
-  transition: background-color 0.3s ease;
 }
 
 .section-content-wrapper {
@@ -308,7 +316,6 @@ main {
 .projects-section {
   padding: 4rem 2rem;
   background-color: var(--background-dark);
-  transition: background-color 0.3s ease;
 }
 
 .projects-header {
