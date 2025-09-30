@@ -50,7 +50,7 @@ export default function AllProjects() {
           {allProjects.map((project, index) => (
             <div
               key={project.id}
-              className="project-card animated-item"
+              className="project-card animate-slide-in"
               ref={(el) => (projectCardRefs.current[index] = el)}
             >
               <img src={project.imageUrl} alt={project.title} className="project-image" />
