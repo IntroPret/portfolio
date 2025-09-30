@@ -29,7 +29,7 @@ const About = React.forwardRef((props, ref) => {
             smart systems to designing user-friendly platforms.
           </p>
           <p className="about-paragraph">
-            Beyond coding, I enjoy strategy games and traveling, which keep me inspired and bring 
+            Beyond coding, I enjoy playing strategy games, which keep me inspired and bring 
             fresh perspectives to my work. I’m always excited to collaborate on meaningful projects 
             and turn ideas into reality.
           </p>
