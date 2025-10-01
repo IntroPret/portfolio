@@ -6,7 +6,6 @@ body.dark-mode {
   --text-secondary: #d1d5db;
   --accent: #34d399;
   --accent-text: #111827;
-  --link: #a5b4fc;
   --link-hover: #c7d2fe;
   --header-bg: rgba(20, 20, 20, 0.7);
   --header-border: rgba(255, 255, 255, 0.1);
@@ -27,7 +26,6 @@ body.light-mode {
   --text-secondary: #6c757d;          /* Softer gray */
   --accent: #0ea672;                  /* More saturated green */
   --accent-text: #ffffff;
-  --link: #2563eb;                    /* Stronger blue */
   --link-hover: #1d4ed8;              /* Deeper blue on hover */
   --header-bg: rgba(255, 255, 255, 0.85);
   --header-border: rgba(0, 0, 0, 0.07);
@@ -78,7 +76,7 @@ section {
 }
 
 #projects {
-  scroll-margin-top:-40px;
+  scroll-margin-top:-80px;
 }
 
 /* --- Scroll Animation Styling --- */
@@ -312,6 +310,153 @@ main {
   margin-bottom: 1rem;
 }
 
+/* --- About Me Link --- */
+.about-me-link-container {
+  margin-top: 2rem;
+}
+
+.about-me-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--text-primary);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.1rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  
+  background-color: var(--background-dark);
+  transition: all 0.2s ease-in-out;
+}
+
+.about-me-link .arrow-icon {
+  transition: transform 0.2s ease-in-out;
+}
+
+.about-me-link:hover {
+  background-color: var(--header-hover-bg);
+  color: var(--link-hover);
+}
+
+.about-me-link:hover .arrow-icon {
+  transform: translateX(5px);
+}
+
+/* --- About Me Page --- */
+.about-me-page {
+  max-width: 900px;
+  margin: 4rem auto;
+  padding: 2rem;
+  text-align: left;
+}
+
+.about-me-intro {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  margin-bottom: 4rem;
+}
+
+.about-me-image-container {
+  flex-shrink: 0;
+}
+
+.about-me-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--accent);
+}
+
+.about-me-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin: 0;
+}
+
+.about-me-subtitle {
+  font-size: 1.25rem;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.about-me-description {
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.skills-section {
+  margin-bottom: 4rem;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.skill-category-title {
+  font-size: 1.5rem;
+  color: var(--accent);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--accent);
+}
+
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.skill-tag {
+  background-color: var(--tag-bg);
+  color: var(--tag-text);
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+.connect-section {
+  text-align: center;
+}
+
+.connect-description {
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+.contact-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--text-primary);
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  background-color: var(--background-light);
+  transition: all 0.2s ease-in-out;
+}
+
+.contact-link:hover {
+  background-color: var(--header-hover-bg);
+  color: var(--link-hover);
+  transform: translateY(-2px);
+}
+
 /* --- Projects Section Styling --- */
 .projects-section {
   padding: 4rem 2rem;
@@ -340,6 +485,16 @@ main {
   margin: 0 auto;
 }
 
+.home-projects-grid {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 3rem;
+  max-width: 1200px;
+}
+
+.home-projects-grid .project-card:hover {
+  transform: translateY(-6px) scale(1.01);
+}
+
 .project-card {
   background-color: var(--background-light);
   border-radius: 12px;
@@ -356,6 +511,11 @@ main {
 
 .project-image {
   object-fit: contain;
+}
+
+.home-projects-grid .project-image {
+  max-height: 280px;
+  width: 100%;
 }
 
 .project-card-content {
@@ -376,12 +536,13 @@ main {
 .project-description {
   color: var(--text-secondary);
   line-height: 1.6;
-  flex-grow: 1;
   font-size: 0.9rem;
+  margin-bottom: 0.5rem;
 }
 
 .project-tags {
-  margin-top: 1rem;
+  margin-bottom: auto; /* This pushes the tags to the bottom */
+  padding-top: 1rem; /* This adds space above the tags */
 }
 
 .project-tag {
@@ -397,7 +558,7 @@ main {
 }
 
 .view-all-container {
-  margin-top: 0;
+  margin-top: 50px;
 }
 
 .view-all-link {
@@ -430,6 +591,10 @@ main {
 .all-projects-page {
   padding: 2rem;
   margin-top: 2.5rem;
+}
+
+.all-projects-page .section-title{
+  margin-bottom: 2rem;
 }
 
 .all-projects-nav {

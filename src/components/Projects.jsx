@@ -22,7 +22,7 @@ const Projects = React.forwardRef((props, ref) => {
             </Link>
         </div>
       </div>
-        <div className="projects-grid">
+        <div className="projects-grid home-projects-grid">
             {projects.map((project) => (
                 <div key={project.id} className="project-card">
                     <img src={project.imageUrl} alt={project.title} className="project-image" />

@@ -7,6 +7,7 @@ import About from './components/About';
 import Projects from './components/Projects';
 import Footer from './components/Footer';
 import AllProjects from './pages/AllProjects';
+import AboutMe from './pages/AboutMe';
 
 function App() {
   const location = useLocation();
@@ -95,6 +96,7 @@ function App() {
           </main>
         } />
         <Route path="/projects" element={<AllProjects />} />
+        <Route path="/aboutme" element={<AboutMe />} />
       </Routes>
       <Footer />
     </div>

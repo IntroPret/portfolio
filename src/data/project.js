@@ -10,7 +10,7 @@ export const allProjects = [
         id: 2,
         title: 'FactGazer | AI Fake News Detection',
         description: 'A fact-checking web app powered by machine learning to detect and flag potential fake news. Built with a custom stacking model for high accuracy and deployed on a web interface.',
-        imageUrl: '/factgazer.jpg',
+        imageUrl: '/factgazer.png',
         tags: ['Python', 'Machine Learning', 'Flask', 'HTML/CSS/JS'],
       },
       {
@@ -24,7 +24,7 @@ export const allProjects = [
         id: 4,
         title: 'BISINDO Sign Language Recognition',
         description: 'A research project comparing transfer learning models (VGG19, MobileNetV2, YOLOv8) for Indonesian sign language classification. Dataset preprocessing, model training, and evaluation included.',
-        imageUrl: '/bisindo.jpg',
+        imageUrl: '/research-bisindo.png',
         tags: ['Deep Learning', 'Transfer Learning','TensorFlow', 'YOLOv8', 'Python'],
       },
 ];

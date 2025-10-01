@@ -1,12 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { ArrowRight } from 'lucide-react';
 
 const About = React.forwardRef((props, ref) => {
   return (
     <section id="about" className="about-section animated-section" ref={ref}>
       <div className="section-content-wrapper">
         <div className="about-image-container">
-          <img 
-            src="https://placehold.co/400x400/1f2937/34d399?text=Your+Photo" 
+          <img
+            src="https://placehold.co/400x400/1f2937/34d399?text=Your+Photo"
             alt="A professional headshot of Your Name"
             className="about-image"
           />
@@ -17,22 +19,23 @@ const About = React.forwardRef((props, ref) => {
             Hi, I’m Alfred Dexter :3
           </h3>
           <p className="about-paragraph">
-            I’m a passionate and results-driven Software Developer and Computer Science student at 
-            Binus University. My journey into tech started with curiosity about how things work, 
-            and it has grown into a love for crafting intelligent, efficient, 
+            I’m a passionate and results-driven Software Developer and Computer Science student at
+            Binus University. My journey into tech started with curiosity about how things work,
+            and it has grown into a love for crafting intelligent, efficient,
             and user-focused applications.
           </p>
           <p className="about-paragraph">
-            I specialize in web development, AI, and IoT, with experience spanning machine learning, 
-            computer vision, and modern frameworks like React and ASP.NET. 
-            I enjoy bridging software with real-world impact — from developing 
+            I specialize in web development, AI, and IoT, with experience spanning machine learning,
+            computer vision, and modern frameworks like React and ASP.NET.
+            I enjoy bridging software with real-world impact — from developing
             smart systems to designing user-friendly platforms.
           </p>
-          <p className="about-paragraph">
-            Beyond coding, I enjoy playing strategy games, which keep me inspired and bring 
-            fresh perspectives to my work. I’m always excited to collaborate on meaningful projects 
-            and turn ideas into reality.
-          </p>
+          <div className="about-me-link-container">
+            <Link to="/aboutme" className="about-me-link">
+              <span>Know Me Better</span>
+              <ArrowRight size={20} className="arrow-icon" />
+            </Link>
+          </div>
         </div>
       </div>
     </section>
