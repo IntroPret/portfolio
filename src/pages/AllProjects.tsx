@@ -2,8 +2,16 @@ import React, { useLayoutEffect, useEffect, useRef } from 'react';
 import { allProjects } from '../data/project';
 import '../App.css';
 
+interface Project {
+  id: number;
+  title: string;
+  description: string;
+  imageUrl: string;
+  tags: string[];
+}
+
 export default function AllProjects() {
-  const projectCardRefs = useRef([]);
+  const projectCardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useLayoutEffect(() => {
     window.scrollTo(0, 0);
@@ -51,18 +59,20 @@ export default function AllProjects() {
       <div className="all-projects-page">
         <h1 className="section-title">All My Projects</h1>
         <div className="projects-grid">
-          {allProjects.map((project, index) => (
+          {allProjects.map((project: Project, index) => (
             <div
               key={project.id}
               className="project-card animate-slide-in"
-              ref={(el) => (projectCardRefs.current[index] = el)}
+              ref={(el) => {
+                projectCardRefs.current[index] = el;
+              }}
             >
               <img src={project.imageUrl} alt={project.title} className="project-image" />
               <div className="project-card-content">
                 <h3 className="project-title">{project.title}</h3>
                 <p className="project-description">{project.description}</p>
                 <div className="project-tags">
-                  {project.tags.map((tag) => (
+                  {project.tags.map((tag: string) => (
                     <span key={tag} className="project-tag">{tag}</span>
                   ))}
                 </div>

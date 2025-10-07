@@ -1,7 +1,9 @@
 import React from 'react';
 import '../App.css';
 
-const Hero = React.forwardRef((props, ref) => {
+type HeroProps = {};
+
+const Hero = React.forwardRef<HTMLElement, HeroProps>((props, ref) => {
   return (
     <section id="hero" className="hero-section animated-section" ref={ref}>
       <div className="hero-content">

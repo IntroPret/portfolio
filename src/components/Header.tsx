@@ -1,17 +1,23 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Home, User, Briefcase, Sun, Moon } from 'lucide-react';
+import { Home, User, Briefcase, Sun, Moon, LucideProps } from 'lucide-react';
 
-const navLinks = [
+interface HeaderProps {
+  activeSection: string;
+  theme: string;
+  toggleTheme: () => void;
+}
+
+const navLinks: { id: string; icon: React.FC<LucideProps>; text: string }[] = [
   { id: 'about', icon: User, text: 'About' },
   { id: 'projects', icon: Briefcase, text: 'Projects' },
 ];
 
-export default function Header({ activeSection ,theme, toggleTheme}) {
+export default function Header({ activeSection ,theme, toggleTheme} : HeaderProps) {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const handleNavClick = (sectionId) => {
+  const handleNavClick = (sectionId: string) => {
     if (location.pathname !== '/') {
       navigate('/', { state: { scrollTo: sectionId } });
     } else {
@@ -26,11 +32,11 @@ export default function Header({ activeSection ,theme, toggleTheme}) {
     }
   };
 
-  const getLinkClass = (section) => {
+  const getLinkClass = (section: string) => {
     return activeSection === section ? 'nav-link active' : 'nav-link';
   };
 
-  const getIconLinkClass = (section) => {
+  const getIconLinkClass = (section: string) => {
     return activeSection === section ? 'nav-icon-link active' : 'nav-icon-link';
   };
 

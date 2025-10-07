@@ -2,7 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 
-const About = React.forwardRef((props, ref) => {
+type AboutProps = {};
+
+const About = React.forwardRef<HTMLElement, AboutProps>((props, ref) => {
   return (
     <section id="about" className="about-section animated-section" ref={ref}>
       <div className="section-content-wrapper">

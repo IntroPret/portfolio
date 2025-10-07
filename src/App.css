@@ -44,6 +44,11 @@ body.light-mode .about-section {
   box-shadow: 0 2px 12px rgba(60, 60, 90, 0.04);
 }
 
+body.dark-mode .project-card {
+  border: 1px solid transparent;
+}
+
+
 body.light-mode .project-card {
   border: 1px solid #e0e3ea;
   box-shadow: 0 4px 16px rgba(60, 60, 90, 0.06), 0 0 8px rgba(0,0,0,0.02);
@@ -228,7 +233,6 @@ main {
   min-height: 90vh;
   padding: 0 2rem;
   text-align: center;
-  background-color: var(--background-dark);
 }
 
 .hero-content {
@@ -460,7 +464,6 @@ main {
 /* --- Projects Section Styling --- */
 .projects-section {
   padding: 4rem 2rem;
-  background-color: var(--background-dark);
 }
 
 .projects-header {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useLayoutEffect, useRef } from 'react';
+import React from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header';
@@ -9,19 +9,27 @@ import Footer from './components/Footer';
 import AllProjects from './pages/AllProjects';
 import AboutMe from './pages/AboutMe';
 
+// Define a type for the state that can be passed via react-router's Link
+interface LocationState {
+  scrollY?: number;
+  scrollTo?: string;
+}
+
 function App() {
   const location = useLocation();
-  const [activeSection, setActiveSection] = useState('');
-  const [theme, setTheme] = useState(() => {
+  const state = location.state as LocationState | null; // Assert the type of location.state
+
+  const [activeSection, setActiveSection] = React.useState<string>('');
+  const [theme, setTheme] = React.useState<string>(() => {
     const savedTheme = localStorage.getItem('theme');
     return savedTheme || 'dark';
   });
 
-  const heroRef = useRef(null);
-  const aboutRef = useRef(null);
-  const projectsRef = useRef(null);
+  const heroRef = React.useRef<HTMLElement>(null);
+  const aboutRef = React.useRef<HTMLElement>(null);
+  const projectsRef = React.useRef<HTMLElement>(null);
 
-  useEffect(() => {
+  React.useEffect(() => {
     document.body.classList.remove('light-mode', 'dark-mode');
     document.body.classList.add(`${theme}-mode`);
     localStorage.setItem('theme', theme);
@@ -31,26 +39,26 @@ function App() {
     setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'));
   };
 
-  useLayoutEffect(() => {
+  React.useLayoutEffect(() => {
     if (location.pathname === '/') {
-      if (typeof location.state?.scrollY === 'number') {
-        window.scrollTo(0, location.state.scrollY);
-      } else if (location.state?.scrollTo) {
+      if (typeof state?.scrollY === 'number') {
+        window.scrollTo(0, state.scrollY);
+      } else if (state?.scrollTo) {
         setTimeout(() => {
-          const element = document.getElementById(location.state.scrollTo);
+          const element = document.getElementById(state.scrollTo as string);
           if (element) {
             element.scrollIntoView({ behavior: 'smooth' });
-          } else if (location.state.scrollTo === 'hero') {
+          } else if (state.scrollTo === 'hero') {
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }
-        }, 150); 
+        }, 150);
       }
     }
-  }, [location.pathname, location.state]);
+  }, [location.pathname, state]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     const sections = [heroRef, aboutRef, projectsRef];
-    
+
     if (location.pathname !== '/') {
       return;
     }

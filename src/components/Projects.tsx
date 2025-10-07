@@ -4,9 +4,11 @@ import { ArrowRight } from 'lucide-react';
 import { allProjects } from '../data/project';
 import '../App.css';
 
+type projectsProps = {};
+
 const projects = allProjects.slice(0, 2);
 
-const Projects = React.forwardRef((props, ref) => {
+const Projects = React.forwardRef<HTMLElement, projectsProps>((props, ref) => {
   return (
     <section id="projects" className="projects-section animated-section" ref={ref}>
       <div className="projects-header">
