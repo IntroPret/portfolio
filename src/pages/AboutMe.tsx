@@ -1,16 +1,52 @@
-import React, { useLayoutEffect } from 'react';
+import React from 'react';
 import { Mail, Linkedin, Github } from 'lucide-react';
 import { skills } from '../data/skills';
 import '../App.css';
 
 export default function AboutMe() {
-  useLayoutEffect(() => {
+  const introRef = React.useRef<HTMLElement>(null);
+  const skillsRef = React.useRef<HTMLElement>(null);
+  const connectRef = React.useRef<HTMLElement>(null);
+
+  React.useLayoutEffect(() => {
     window.scrollTo(0, 0);
+  }, []);
+
+  React.useEffect(() => {
+    const sections = [introRef, skillsRef, connectRef];
+    
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+      }
+    );
+
+    sections.forEach((ref) => {
+      if (ref.current) {
+        observer.observe(ref.current);
+      }
+    });
+
+    return () => {
+      sections.forEach((ref) => {
+        if (ref.current) {
+          observer.unobserve(ref.current);
+        }
+      });
+    };
   }, []);
 
   return (
     <div className="about-me-page">
-      <section className="about-me-intro">
+      <section ref={introRef} className="about-me-intro animated-section">
         <div className="about-me-image-container">
           <img
             src="https://placehold.co/400x400/1f2937/34d399?text=Your+Photo"
@@ -30,7 +66,7 @@ export default function AboutMe() {
         </div>
       </section>
 
-      <section className="skills-section">
+      <section ref={skillsRef} className="skills-section animated-section">
         <h2 className="section-title">My Skills</h2>
         <div className="skills-grid">
           {skills.map((skill) => (
@@ -46,7 +82,7 @@ export default function AboutMe() {
         </div>
       </section>
 
-      <section className="connect-section">
+      <section ref={connectRef} className="connect-section animated-section">
         <h2 className="section-title">Let's Connect!</h2>
         <p className="connect-description">
           I'm always open to discussing new projects, creative ideas, or opportunities to be part of an ambitious team. Feel free to reach out!
