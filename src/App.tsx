@@ -9,7 +9,6 @@ import Footer from './components/Footer';
 import AllProjects from './pages/AllProjects';
 import AboutMe from './pages/AboutMe';
 
-// Define a type for the state that can be passed via react-router's Link
 interface LocationState {
   scrollY?: number;
   scrollTo?: string;
@@ -17,7 +16,7 @@ interface LocationState {
 
 function App() {
   const location = useLocation();
-  const state = location.state as LocationState | null; // Assert the type of location.state
+  const state = location.state as LocationState | null;
 
   const [activeSection, setActiveSection] = React.useState<string>('');
   const [theme, setTheme] = React.useState<string>(() => {
@@ -33,12 +32,13 @@ function App() {
     document.body.classList.remove('light-mode', 'dark-mode');
     document.body.classList.add(`${theme}-mode`);
     localStorage.setItem('theme', theme);
+    window.scrollTo(0, 0);
   }, [theme]);
 
   const toggleTheme = () => {
     setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'));
   };
-
+  
   React.useLayoutEffect(() => {
     if (location.pathname === '/') {
       if (typeof state?.scrollY === 'number') {
@@ -74,6 +74,7 @@ function App() {
       },
       {
         threshold: 0.15,
+        rootMargin: "-100px 0px -50% 0px",
       }
     );
 
