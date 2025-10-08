@@ -1,7 +1,7 @@
 export const skills = [
   {
     category: 'Frontend Development',
-    technologies: ['HTML', 'CSS', 'JavaScript', 'React', 'Next.js', 'Tailwind CSS'],
+    technologies: ['HTML', 'CSS/Tailwind CSS', 'JavaScript', 'TypeScript', 'React', 'Next.js'],
   },
   {
     category: 'Backend Development',
@@ -13,7 +13,7 @@ export const skills = [
   },
   {
     category: 'Databases',
-    technologies: ['MongoDB', 'MySQL', 'Firebase Firestore'],
+    technologies: ['SQL', 'MongoDB', 'MySQL', 'Firebase Firestore'],
   },
   {
     category: 'IoT & Embedded Systems',
