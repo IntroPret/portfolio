@@ -32,12 +32,18 @@ function App() {
     document.body.classList.remove('light-mode', 'dark-mode');
     document.body.classList.add(`${theme}-mode`);
     localStorage.setItem('theme', theme);
-    window.scrollTo(0, 0);
   }, [theme]);
 
   const toggleTheme = () => {
     setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'));
   };
+
+  React.useEffect(() => {
+    const navigationEntries = performance.getEntriesByType("navigation") as PerformanceNavigationTiming[];
+    if (navigationEntries.length > 0 && navigationEntries[0].type === 'reload') {
+      window.scrollTo(0, 0);
+    }
+  }, []);
   
   React.useLayoutEffect(() => {
     if (location.pathname === '/') {
