@@ -1,4 +1,5 @@
 import React, { useLayoutEffect, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { allProjects } from '../data/project';
 import '../App.css';
 
@@ -11,7 +12,7 @@ interface Project {
 }
 
 export default function AllProjects() {
-  const projectCardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const projectCardRefs = useRef<(HTMLAnchorElement | null)[]>([]);
 
   useLayoutEffect(() => {
     window.scrollTo(0, 0);
@@ -60,12 +61,14 @@ export default function AllProjects() {
         <h1 className="section-title">All My Projects</h1>
         <div className="projects-grid">
           {allProjects.map((project: Project, index) => (
-            <div
+            <Link
+              to={`/projects/${project.id}`}
               key={project.id}
               className="project-card animate-slide-in"
               ref={(el) => {
                 projectCardRefs.current[index] = el;
               }}
+              style={{textDecoration: 'none'}}
             >
               <img src={project.imageUrl} alt={project.title} className="project-image" />
               <div className="project-card-content">
@@ -77,7 +80,7 @@ export default function AllProjects() {
                   ))}
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

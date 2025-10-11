@@ -8,6 +8,7 @@ import Projects from './components/Projects';
 import Footer from './components/Footer';
 import AllProjects from './pages/AllProjects';
 import AboutMe from './pages/AboutMe';
+import ProjectDetails from './pages/ProjectDetails'; // Import the new component
 
 interface LocationState {
   scrollY?: number;
@@ -111,6 +112,7 @@ function App() {
           </main>
         } />
         <Route path="/projects" element={<AllProjects />} />
+        <Route path="/projects/:projectId" element={<ProjectDetails />} /> {/* Add this route */}
         <Route path="/aboutme" element={<AboutMe />} />
       </Routes>
       <Footer />
