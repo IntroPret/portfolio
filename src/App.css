@@ -732,14 +732,7 @@ main {
   #projects {
     scroll-margin-top: 0;
   }
-
-  .floating-header {
-    top: 1rem;
-    width: calc(100% - 2rem);
-    left: 1rem;
-    transform: none;
-  }
-
+  
   main {
     padding: 1.25rem;
     padding-top: 6rem;
