@@ -64,6 +64,18 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -197,6 +209,12 @@ main {
   cursor: pointer;
 }
 
+.nav-link:focus-visible,
+.nav-icon-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
 .nav-link {
   gap: 0.5rem;
   padding: 0.5rem 1rem;
@@ -232,6 +250,15 @@ main {
   transition: background-color 0.3s ease;
 }
 /* --- End Header Styles --- */
+
+.hero-button:focus-visible,
+.about-me-link:focus-visible,
+.view-all-link:focus-visible,
+.contact-link:focus-visible,
+.back-home-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
 
 /* Hero Section Styling */
 .hero-section {
@@ -547,7 +574,9 @@ main {
 }
 
 .project-image {
-  object-fit: contain;
+  display: block;
+  width: 100%;
+  object-fit: cover;
   aspect-ratio: 16/9;
 }
 
@@ -573,6 +602,7 @@ main {
 
 .project-description {
   color: var(--text-secondary);
+  max-width: 60ch;
   line-height: 1.6;
   font-size: 0.9rem;
   margin-top: 0.5rem;
@@ -667,14 +697,61 @@ main {
   transition: background-color 0.3s ease;
 }
 
-/* Responsive adjustments for smaller screens */
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  main {
+    padding: 1.75rem;
+    padding-top: 4.5rem;
+  }
+
+  .hero-section {
+    min-height: 80vh;
+    padding-top: 2rem;
+  }
+
+  .hero-title {
+    font-size: 2.75rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .projects-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .view-all-container {
+    margin-top: 0;
+  }
+}
+
 @media (max-width: 768px) {
   #projects {
     scroll-margin-top: 0;
   }
 
+  .floating-header {
+    top: 1rem;
+    width: calc(100% - 2rem);
+    left: 1rem;
+    transform: none;
+  }
+
+  main {
+    padding: 1.25rem;
+    padding-top: 6rem;
+  }
+
+  .hero-section {
+    min-height: 70vh;
+    padding: 0 1rem;
+  }
+
   .hero-title {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
   }
   .hero-subtitle {
     font-size: 1rem;
@@ -693,6 +770,7 @@ main {
   .section-content-wrapper {
     flex-direction: column;
     gap: 1.5rem;
+    padding: 0 1rem;
   }
 
   .section-title{
@@ -715,5 +793,48 @@ main {
 
   .projects-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 1.9rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .about-me-title {
+    font-size: 2rem;
+  }
+
+  .section-title {
+    font-size: 1.75rem;
+  }
+
+  .project-card-content {
+    padding: 0.85rem;
+  }
+
+  .contact-link {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .animated-section > *,
+  .animated-item,
+  .animate-slide-in {
+    transform: none !important;
+    opacity: 1 !important;
   }
 }

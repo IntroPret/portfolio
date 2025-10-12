@@ -21,6 +21,18 @@ export default function AllProjects() {
   useEffect(() => {
     const currentRefs = projectCardRefs.current; // Capture the refs
 
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (prefersReducedMotion) {
+      currentRefs.forEach((card) => {
+        if (card) {
+          card.classList.add('is-visible');
+          card.classList.remove('animate-slide-in');
+        }
+      });
+      return;
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -69,8 +81,15 @@ export default function AllProjects() {
                 projectCardRefs.current[index] = el;
               }}
               style={{textDecoration: 'none'}}
+              aria-label={`View ${project.title} project details`}
             >
-              <img src={project.imageUrl} alt={project.title} className="project-image" />
+              <img
+                src={project.imageUrl}
+                alt={project.title}
+                className="project-image"
+                loading="lazy"
+                decoding="async"
+              />
               <div className="project-card-content">
                 <h3 className="project-title">{project.title}</h3>
                 <p className="project-description">{project.description}</p>

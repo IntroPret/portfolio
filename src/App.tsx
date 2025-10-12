@@ -70,6 +70,17 @@ function App() {
       return;
     }
 
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (prefersReducedMotion) {
+      sections.forEach((ref) => {
+        if (ref.current) {
+          ref.current.classList.add('is-visible');
+        }
+      });
+      return;
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {

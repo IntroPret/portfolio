@@ -3,7 +3,7 @@ export const allProjects = [
         id: 1,
         title: 'Glamulus | Smart Glass',
         description: 'A wearable prototype integrating smart glass hardware with IoT and software features. Built to enhance user experience with responsive UI and real-time data feedback.',
-        imageUrl: '/glamulus-glass-prototype.jpg',
+  imageUrl: '/glamulus-glass-prototype.jpg',
         tags: ['Azure', 'Ultralytics', 'Hardware Prototype', 'Next.js', 'Embedded Systems'],
         overview: 'Glamulus is an IoT-powered smart glass prototype designed to blend hardware innovation with AI-based real-time analytics. It connects to Azure IoT Hub and displays results via an OLED interface for seamless feedback.',
         features: [
@@ -30,7 +30,7 @@ export const allProjects = [
         id: 2,
         title: 'FactGazer | AI Fake News Detection',
         description: 'A fact-checking web app powered by machine learning to detect and flag potential fake news. Built with a custom stacking model for high accuracy and deployed on a web interface.',
-        imageUrl: '/factgazer.png',
+  imageUrl: '/factgazer.jpg',
         tags: ['Python', 'Machine Learning', 'Flask', 'HTML/CSS/JS'],
         overview: 'FactGazer helps users identify misinformation by analyzing text using machine learning. It provides confidence-based predictions on whether an article is likely fake or real.',
         features: [
@@ -56,7 +56,7 @@ export const allProjects = [
         id: 3,
         title: 'AiSee | IoT Smart Classroom System',
         description: 'An IoT + AI camera prototype that detects cheating behavior and automates student attendance, with real-time monitoring via Ubidots dashboard and MongoDB integration.',
-        imageUrl: '/aisee-prototype.jpg',
+  imageUrl: '/aisee-prototype.jpg',
         tags: ['Streamlit', 'MicroPython', 'Ubidots', 'OpenCV', 'Firebase', 'IoT'],
         overview: 'AiSee is an intelligent classroom assistant that integrates IoT sensors and AI vision to enhance transparency and efficiency in student monitoring and attendance.',
         features: [
@@ -82,7 +82,7 @@ export const allProjects = [
         id: 4,
         title: 'BISINDO Sign Language Recognition',
         description: 'A research project comparing transfer learning models (VGG19, MobileNetV2, YOLOv8) for Indonesian sign language classification. Dataset preprocessing, model training, and evaluation included.',
-        imageUrl: '/research-bisindo.png',
+  imageUrl: '/research-bisindo.png',
         tags: ['Deep Learning', 'Transfer Learning', 'TensorFlow', 'YOLOv8', 'Python'],
         overview: 'A comparative study evaluating deep learning and transfer learning models for recognizing static BISINDO sign language gestures from images.',
         features: [

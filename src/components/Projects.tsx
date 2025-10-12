@@ -26,9 +26,20 @@ const Projects = React.forwardRef<HTMLElement, projectsProps>((props, ref) => {
       </div>
         <div className="projects-grid home-projects-grid">
             {projects.map((project) => (
-              <Link to={`/projects/${project.id}`} key={project.id} style={{textDecoration: 'none'}}>
+              <Link
+                to={`/projects/${project.id}`}
+                key={project.id}
+                style={{textDecoration: 'none'}}
+                aria-label={`View ${project.title} project details`}
+              >
                 <div className="project-card">
-                    <img src={project.imageUrl} alt={project.title} className="project-image" />
+                    <img
+                      src={project.imageUrl}
+                      alt={project.title}
+                      className="project-image"
+                      loading="lazy"
+                      decoding="async"
+                    />
                     <div className="project-card-content">
                         <h3 className="project-title">{project.title}</h3>
                         <p className="project-description">{project.description}</p>

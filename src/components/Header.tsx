@@ -43,19 +43,39 @@ export default function Header({ activeSection ,theme, toggleTheme} : HeaderProp
   return (
     <header className="floating-header">
       <nav className="header-nav">
-        <button onClick={() => handleNavClick('hero')} className={getIconLinkClass('hero')} aria-label="Home">
+        <button
+          type="button"
+          onClick={() => handleNavClick('hero')}
+          className={getIconLinkClass('hero')}
+          aria-label="Scroll to hero section"
+          aria-current={activeSection === 'hero' ? 'page' : undefined}
+        >
           <Home size={20} />
         </button>
         <div className="separator"></div>
         {navLinks.map(({ id, icon: Icon, text }) => (
-          <button key={id} onClick={() => handleNavClick(id)} className={getLinkClass(id)}>
+          <button
+            key={id}
+            type="button"
+            onClick={() => handleNavClick(id)}
+            className={getLinkClass(id)}
+            aria-label={`Scroll to ${text} section`}
+            aria-current={activeSection === id ? 'page' : undefined}
+          >
             <Icon size={18} />
             <span>{text}</span>
           </button>
         ))}
         <div className="separator"></div>
-        <button className="nav-icon-link" aria-label="Toggle theme" onClick={toggleTheme}>
+        <button
+          type="button"
+          className="nav-icon-link"
+          aria-label="Toggle color theme"
+          aria-pressed={theme === 'light'}
+          onClick={toggleTheme}
+        >
           {theme !== 'light' ? <Moon size={20} /> : <Sun size={20} />}
+          <span className="sr-only">Switch to {theme === 'light' ? 'dark' : 'light'} mode</span>
         </button>
       </nav>
     </header>
