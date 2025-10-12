@@ -39,7 +39,7 @@ export const allProjects = [
           'Confidence score visualization',
           'Dataset preprocessing and model evaluation tools'
         ],
-        techStack: ['Python', 'Flask', 'scikit-learn', 'Pandas', 'HTML/CSS/JS'],
+        techStack: ['Python', 'Flask', 'Scikit-learn', 'Pandas', 'HTML/CSS/JS'],
         challenges: [
           'Managing data imbalance between fake and real news samples',
           'Improving accuracy through ensemble methods',

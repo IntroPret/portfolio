@@ -74,6 +74,11 @@ html {
 
 section {
   scroll-margin-top: 120px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1, h2, h3, p {
+    transition: color 0.3s ease;
 }
 
 #about {
@@ -274,8 +279,29 @@ main {
 
 /* --- About Section Styling --- */
 .about-section {
-  padding: 2rem 2rem;
-  background-color: var(--background-light);
+  padding: 4rem 2rem;
+  background: linear-gradient(
+    135deg,
+    var(--background-light) 0%,
+    var(--background-dark) 100%
+  );
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+/* Optional: subtle glowing accent overlay */
+.about-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 20% 30%,
+    rgba(52, 211, 153, 0.08),
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 0;
 }
 
 .section-content-wrapper {
@@ -285,6 +311,8 @@ main {
   gap: 3rem;
   max-width: 1100px;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
 .about-image-container {
@@ -292,8 +320,8 @@ main {
 }
 
 .about-image {
-  width: 300px;
-  height: 300px;
+  width: clamp(100px, 75%, 300px);
+  height: clamp(100px, 75%, 300px);
   border-radius: 50%;
   object-fit: cover;
   border: 5px solid var(--accent);
@@ -343,8 +371,8 @@ main {
 }
 
 .about-me-link:hover {
-  background-color: var(--header-hover-bg);
-  color: var(--link-hover);
+  background-color: var(--accent);
+  color: var(--accent-text);
 }
 
 .about-me-link:hover .arrow-icon {
@@ -460,8 +488,8 @@ main {
 }
 
 .contact-link:hover {
-  background-color: var(--header-hover-bg);
-  color: var(--link-hover);
+  background-color: var(--accent);
+  color: var(--accent-text);
   transform: translateY(-2px);
 }
 
@@ -482,6 +510,7 @@ main {
 
 .projects-section .section-title {
   margin-bottom: 0;
+  text-align: left;
 }
 
 .projects-grid {
@@ -509,6 +538,7 @@ main {
   transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 
 .project-card:hover {
@@ -518,6 +548,7 @@ main {
 
 .project-image {
   object-fit: contain;
+  aspect-ratio: 16/9;
 }
 
 .home-projects-grid .project-image {
@@ -546,6 +577,7 @@ main {
   font-size: 0.9rem;
   margin-top: 0.5rem;
   margin-bottom: 1rem;
+  flex-grow: 1;
 }
 
 .project-tags {
@@ -587,8 +619,8 @@ main {
 }
 
 .view-all-link:hover {
-  background-color: rgba(165, 180, 252, 0.1);
-  color: var(--link-hover);
+  background-color: var(--accent);
+  color: var(--accent-text);
 }
 
 .view-all-link:hover .arrow-icon {
@@ -637,6 +669,10 @@ main {
 
 /* Responsive adjustments for smaller screens */
 @media (max-width: 768px) {
+  #projects {
+    scroll-margin-top: 0;
+  }
+
   .hero-title {
     font-size: 2.5rem;
   }
@@ -652,5 +688,32 @@ main {
   }
   .header-nav {
     gap: 0.25rem;
+  }
+
+  .section-content-wrapper {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .section-title{
+    font-size: 2rem;
+  }
+
+  .about-me-intro {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-me-text-container {
+    text-align: center;
+  }
+
+  .view-all-link{
+    font-size: 15px;
+    padding: 0.25rem 0.5rem;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
   }
 }

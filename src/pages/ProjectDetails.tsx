@@ -42,7 +42,6 @@ const ProjectDetails: React.FC = () => {
       <header className="project-detail-header">
         <div className="project-header-left">
           <h1 className="project-detail-title">{project.title}</h1>
-          <p className="project-detail-description">{project.description || project.overview}</p>
         </div>
 
         <div className="project-links">
@@ -54,7 +53,7 @@ const ProjectDetails: React.FC = () => {
               className="btn-details btn-primary repo-link"
               aria-label={`Open ${project.title} repository in new tab`}
             >
-              <Github size={50} />
+              <Github size={20} />
               <span>View on GitHub</span>
             </a>
           )}
@@ -67,7 +66,7 @@ const ProjectDetails: React.FC = () => {
               className="btn-details btn-ghost demo-link"
               aria-label={`Open ${project.title} demo in new tab`}
             >
-              <ExternalLink size={16} />
+              <ExternalLink size={20} />
               <span>Live Demo</span>
             </a>
           )}
