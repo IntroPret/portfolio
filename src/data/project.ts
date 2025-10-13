@@ -24,7 +24,7 @@ export const allProjects = [
           'Improved skills in serverless cloud functions and IoT message routing',
           'Gained experience in deploying ML models for edge devices'
         ],
-        repoUrl: 'https://github.com/IntroPret/glamulus-glass',
+        repoUrl: 'https://github.com/IntroPret/glamulus',
       },
       {
         id: 2,
@@ -50,7 +50,7 @@ export const allProjects = [
           'Building a complete ML workflow from data to deployment',
           'Applying model evaluation and interpretability in practice'
         ],
-        repoUrl: 'https://github.com/IntroPret/factgazer',
+        repoUrl: 'https://github.com/IntroPret/FakeNewsDetection',
       },
       {
         id: 3,

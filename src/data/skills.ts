@@ -21,6 +21,6 @@ export const skills = [
   },
   {
     category: 'Tools & Platforms',
-    technologies: ['Git', 'GitHub', 'Docker', 'Azure', 'Streamlit'],
+    technologies: ['Git', 'GitHub', 'Azure', 'Streamlit'],
   },
 ];
