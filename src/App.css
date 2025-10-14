@@ -347,8 +347,8 @@ main {
 }
 
 .about-image {
-  width: clamp(100px, 75%, 300px);
-  height: clamp(100px, 75%, 300px);
+  width: 300px;
+  height: 300px;
   border-radius: 50%;
   object-fit: cover;
   border: 5px solid var(--accent);

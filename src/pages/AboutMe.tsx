@@ -60,7 +60,7 @@ export default function AboutMe() {
       <section ref={introRef} className="about-me-intro animated-section">
         <div className="about-me-image-container">
           <img
-            src="https://placehold.co/400x400/1f2937/34d399?text=Your+Photo"
+            src="fotoprof.JPG"
             alt="Alfred Dexter"
             className="about-me-image"
           />
