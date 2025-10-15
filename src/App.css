@@ -376,7 +376,7 @@ main {
 }
 
 .about-text-container {
-  text-align: left;
+  text-align: justify;
   max-width: 600px;
 }
 
@@ -469,6 +469,7 @@ main {
 .about-me-description {
   color: var(--text-secondary);
   line-height: 1.7;
+  text-align: justify;
 }
 
 .skills-section {

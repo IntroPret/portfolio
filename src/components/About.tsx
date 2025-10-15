@@ -18,7 +18,7 @@ const About = React.forwardRef<HTMLElement, AboutProps>((props, ref) => {
         <div className="about-text-container">
           <h2 className="section-title">About Me</h2>
           <h3 className="about-paragraph">
-            Hi, I’m Alfred Dexter :3
+            Hi, I’m Alfred Dexter!
           </h3>
           <p className="about-paragraph">
             I’m a passionate and results-driven Software Developer and Computer Science student at
@@ -29,7 +29,7 @@ const About = React.forwardRef<HTMLElement, AboutProps>((props, ref) => {
           <p className="about-paragraph">
             I specialize in web development, AI, and IoT, with experience spanning machine learning,
             computer vision, and modern frameworks like React and ASP.NET.
-            I enjoy bridging software with real-world impact — from developing
+            I enjoy bridging software with real-world impact, from developing
             smart systems to designing user-friendly platforms.
           </p>
           <div className="about-me-link-container">

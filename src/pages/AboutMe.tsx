@@ -72,7 +72,7 @@ export default function AboutMe() {
             I’m a passionate and results-driven Software Developer and Computer Science student at Binus University. My journey into tech started with a curiosity about how things work, and it has grown into a love for crafting intelligent, efficient, and user-focused applications.
           </p>
           <p className="about-me-description">
-            I specialize in web development, AI, and IoT, with experience spanning machine learning, computer vision, and modern frameworks like React and ASP.NET. I enjoy bridging software with real-world impact—from developing smart systems to designing user-friendly platforms.
+            I specialize in web development, AI, and IoT, with experience spanning machine learning, computer vision, and modern frameworks like React and ASP.NET. I enjoy bridging software with real-world impact, from developing smart systems to designing user-friendly platforms.
           </p>
         </div>
       </section>

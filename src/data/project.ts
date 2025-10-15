@@ -5,7 +5,7 @@ export const allProjects = [
         description: 'A wearable prototype integrating smart glass hardware with IoT and software features. Built to enhance user experience with responsive UI and real-time data feedback.',
         imageUrl: '/glamulus-glass-prototype.jpg',
         tags: ['Azure', 'Ultralytics', 'Hardware Prototype', 'Next.js', 'Embedded Systems'],
-        overview: 'Glamulus is an IoT-powered smart glass prototype designed to blend hardware innovation with AI-based real-time analytics. It connects to Azure IoT Hub and displays results via an OLED interface for seamless feedback.',
+        overview: 'Glamulus is a pair of intelligent glasses built to empower the deaf and hard-of-hearing community through seamless communication. Equipped with an ESP32 microcontroller, microphone, OV2640 camera, and OLED display, these glasses convert spoken language into real-time subtitles directly in the wearer’s view. Beyond transcription, Glamulus also enables live translation between foreign languages and Bahasa Indonesia, and supports both SIBI and BISINDO sign language recognition to foster inclusive, two-way conversations. All interactions are synced to a smart dashboard, developed with Next.js, Python, Ultralytics, and Azure services, where conversations are automatically organized into accessible notes using Azure OpenAI. By merging IoT hardware with AI-driven software, Glamulus offers a new level of independence and confidence for individuals with hearing impairments.',
         features: [
           'ESP32-CAM integration for image capture',
           'Real-time object detection using YOLOv8 model',
@@ -32,7 +32,7 @@ export const allProjects = [
         description: 'A fact-checking web app powered by machine learning to detect and flag potential fake news. Built with a custom stacking model for high accuracy and deployed on a web interface.',
         imageUrl: '/factgazer.jpg',
         tags: ['Python', 'Machine Learning', 'Flask', 'HTML/CSS/JS'],
-        overview: 'FactGazer helps users identify misinformation by analyzing text using machine learning. It provides confidence-based predictions on whether an article is likely fake or real.',
+        overview: 'FactGazer is a machine learning–driven web application created to identify and flag misleading or potentially fake news. It analyzes text content using a custom stacking model that combines multiple classifiers to deliver highly accurate predictions. Users can submit articles through an interactive web interface and instantly view the system’s confidence score along with supporting insights. The project integrates data preprocessing, model evaluation, and user-facing visualization in one streamlined workflow. Built with Python, Flask, and Scikit-learn, FactGazer demonstrates how machine learning can support media literacy by helping people critically evaluate the credibility of online information.',
         features: [
           'Stacking model combining Naive Bayes, Logistic Regression, and Random Forest',
           'Interactive web interface for user-submitted news articles',
@@ -58,7 +58,7 @@ export const allProjects = [
         description: 'An IoT + AI camera prototype that detects cheating behavior and automates student attendance, with real-time monitoring via Ubidots dashboard and MongoDB integration.',
         imageUrl: '/aisee-prototype.jpg',
         tags: ['Streamlit', 'MicroPython', 'Ubidots', 'OpenCV', 'Firebase', 'IoT'],
-        overview: 'AiSee is an intelligent classroom assistant that integrates IoT sensors and AI vision to enhance transparency and efficiency in student monitoring and attendance.',
+        overview: 'AiSee is an intelligent system designed to automate attendance tracking and detect cheating behavior in classrooms and examinations. Developed as part of the Samsung Innovation Campus program, it integrates computer vision, IoT devices, and a web-based interface to provide real-time student monitoring. The system uses facial recognition to record attendance, continuous identity verification to prevent impersonation, and object detection to flag suspicious activity. Built with Python, Streamlit, OpenCV, Firebase, and Cloudinary, AiSee features dedicated branches for both web deployment and IoT implementation, ensuring smooth coordination between devices and the monitoring platform.',
         features: [
           'Automatic attendance tracking using facial recognition',
           'Cheating detection based on real-time camera input',
@@ -84,7 +84,7 @@ export const allProjects = [
         description: 'A research project comparing transfer learning models (VGG19, MobileNetV2, YOLOv8) for Indonesian sign language classification. Dataset preprocessing, model training, and evaluation included.',
         imageUrl: '/research-bisindo.png',
         tags: ['Deep Learning', 'Transfer Learning', 'TensorFlow', 'YOLOv8', 'Python'],
-        overview: 'A comparative study evaluating deep learning and transfer learning models for recognizing static BISINDO sign language gestures from images.',
+        overview: 'The BISINDO Sign Language Recognition project explores how transfer learning can be applied to recognize Indonesian sign language gestures from still images. It compares the performance of several pre-trained deep learning models, including VGG19, MobileNetV2, and YOLOv8, to determine which architecture offers the best accuracy and efficiency. The project covers dataset preprocessing, model training, and evaluation through metrics and confusion matrix analysis. Built with TensorFlow, Keras, and Python, this work contributes to accessibility technology by advancing automated sign language interpretation, making communication more inclusive for the Indonesian deaf community.',
         features: [
           'Dataset preprocessing and augmentation',
           'Model training using VGG19, MobileNetV2, and YOLOv8',
@@ -102,6 +102,6 @@ export const allProjects = [
           'Experience with model evaluation and visualization',
           'Research documentation and academic writing for publication'
         ],
-        repoUrl: 'https://github.com/IntroPret/bisindo-research',
+        repoUrl: 'https://github.com/IntroPret/BISINDO-Sign-Language-Recognition.git',
       },
 ];
