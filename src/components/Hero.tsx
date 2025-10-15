@@ -1,4 +1,5 @@
 import React from 'react';
+import { Download } from 'lucide-react';
 import '../App.css';
 
 type HeroProps = {};
@@ -11,9 +12,15 @@ const Hero = React.forwardRef<HTMLElement, HeroProps>((props, ref) => {
         <p className="hero-subtitle">
           Bridging Web Development, AI, and IoT into real-world solutions.
         </p>
-        <a href="#projects" className="hero-button">
-          View My Work
-        </a>
+        <div className="hero-buttons">
+          <a href="#projects" className="hero-button">
+            View My Work
+          </a>
+          <a href="/alfred-dexter-cv.pdf" download className="hero-button hero-button-secondary">
+            <Download size={20} />
+            <span>Download CV</span>
+          </a>
+        </div>
       </div>
     </section>
   );

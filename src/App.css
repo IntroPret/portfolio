@@ -288,6 +288,12 @@ main {
   margin-bottom: 2.5rem;
 }
 
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
 .hero-button {
   background-color: var(--accent);
   color: var(--accent-text);
@@ -297,11 +303,26 @@ main {
   font-weight: 700;
   font-size: 1rem;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 2px solid transparent;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .hero-button:hover {
   transform: translateY(-3px);
   box-shadow: 0 10px 20px rgba(52, 211, 153, 0.2);
+}
+
+.hero-button-secondary {
+  background-color: transparent;
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.hero-button-secondary:hover {
+  background-color: var(--accent);
+  color: var(--accent-text);
 }
 
 /* --- About Section Styling --- */
